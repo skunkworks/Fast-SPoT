@@ -10,6 +10,7 @@
 
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) UIImageView *imageView;
 @end
 
@@ -46,6 +47,8 @@
         
         // Grab image data from URL. Do this with a serial dispatch queue
         NSURL *imageURL = self.imageURL;
+        [self.activityIndicator startAnimating];
+        
         dispatch_queue_t imageQ = dispatch_queue_create("Image queue", NULL);
         dispatch_async(imageQ, ^{
             // Simulate network latency
@@ -54,15 +57,16 @@
             NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
             UIImage *image = [[UIImage alloc] initWithData:imageData];
             
-            // Successfully pulled image, so display it
-            if (image && self.imageURL == imageURL) {
+            // Successfully pulled image. Check that user hasn't chosen another image URL before displaying
+            if (self.imageURL == imageURL) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.scrollView.contentSize = image.size;
-                    self.imageView.image = image;
-                    // Can't forget to set the imageView's frame to its new natural size
-                    self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-                    // And fit the image to scroll view's current dimensions
-                    [self fitImageToWindow];
+                    if (image) {
+                        self.scrollView.contentSize = image.size;
+                        self.imageView.image = image;
+                        self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+                        [self fitImageToWindow];
+                    }
+                    [self.activityIndicator stopAnimating];
                 });
             }
         });
