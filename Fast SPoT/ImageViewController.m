@@ -40,34 +40,38 @@
 
 - (void)resetImage
 {
-    // Do nothing if scrollView is nil, e.g. when someone sets imageUrl before the scrollView outlet is set
     if (self.scrollView) {
-        // Blank out existing values first
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
         
-        // These will be set to nil if imageUrl or imageData is invalid
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        
-        // Successfully pulled image, so display it
-        if (image) {
-            // Must reset zoom scale when changing images, since if the scroll view is already zoomed it would stay zoomed
-            self.scrollView.zoomScale = 1.0;
-            self.scrollView.contentSize = image.size;
-            self.imageView.image = image;
-            // Can't forget to set the imageView's frame to its new natural size
-            self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-        }
+        // Grab image data from URL. Do this with a serial dispatch queue
+        NSURL *imageURL = self.imageURL;
+        dispatch_queue_t imageQ = dispatch_queue_create("Image queue", NULL);
+        dispatch_async(imageQ, ^{
+            // Simulate network latency
+            [NSThread sleepForTimeInterval:2];
+            
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+            UIImage *image = [[UIImage alloc] initWithData:imageData];
+            
+            // Successfully pulled image, so display it
+            if (image && self.imageURL == imageURL) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.scrollView.contentSize = image.size;
+                    self.imageView.image = image;
+                    // Can't forget to set the imageView's frame to its new natural size
+                    self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+                    // And fit the image to scroll view's current dimensions
+                    [self fitImageToWindow];
+                });
+            }
+        });
     }
 }
 
-// When the bounds change, we need to automatically zoom so that as much of the photo is possible
-- (void)viewDidLayoutSubviews
+// Readjust our zoom scale so that the image view fits as much as possible in the scroll view
+- (void)fitImageToWindow
 {
-    [super viewDidLayoutSubviews];
-    
-    // Readjust our zoom scale so that the image view fits as much as possible in the scroll view
     // Logic:
     // 1. Find the scroll view's dimension ratio (width/height).
     //    2. If the photo's width/height ratio is lesser -- photo is relatively taller than the scroll view -- fit by height.
@@ -81,8 +85,17 @@
     } else {
         zoomScale = self.scrollView.bounds.size.width / self.imageView.bounds.size.width;
     }
-
+    
     self.scrollView.zoomScale = zoomScale;
+}
+
+// When the bounds change, we need to automatically zoom so that as much of the photo is possible
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    // Refit the image to scroll view's current dimensions 
+    [self fitImageToWindow];
 }
 
 @end
