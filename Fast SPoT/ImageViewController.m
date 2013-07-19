@@ -7,6 +7,7 @@
 //
 
 #import "ImageViewController.h"
+#include <libkern/OSAtomic.h>
 
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -41,20 +42,26 @@
 
 - (void)resetImage
 {
+    static int32_t networkActivityCount = 0;
+    
     if (self.scrollView) {
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
         
         // Grab image data from URL. Do this with a serial dispatch queue
         NSURL *imageURL = self.imageURL;
+        
         [self.activityIndicator startAnimating];
         
         dispatch_queue_t imageQ = dispatch_queue_create("Image queue", NULL);
         dispatch_async(imageQ, ^{
-            // Simulate network latency
+            OSAtomicIncrement32(&networkActivityCount);
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
             [NSThread sleepForTimeInterval:2];
-            
             NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+            OSAtomicDecrement32(&networkActivityCount);
+            if (!networkActivityCount) [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            
             UIImage *image = [[UIImage alloc] initWithData:imageData];
             
             // Successfully pulled image. Check that user hasn't chosen another image URL before displaying
