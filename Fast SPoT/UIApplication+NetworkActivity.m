@@ -7,7 +7,20 @@
 //
 
 #import "UIApplication+NetworkActivity.h"
+#import <libkern/OSAtomic.h>
 
-@implementation UIApplication_NetworkActivity
+@implementation UIApplication (NetworkActivity)
 
+static int networkActivityCount = 0;
+- (void)pushNetworkActivity
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    OSAtomicIncrement32(&networkActivityCount);
+}
+
+- (void)popNetworkActivity
+{
+    OSAtomicDecrement32(&networkActivityCount);
+    if (!networkActivityCount) [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
 @end

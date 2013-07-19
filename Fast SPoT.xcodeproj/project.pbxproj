@@ -24,6 +24,7 @@
 		4ABA64A31799ED7A00F90D3A /* StanfordPhotosDetailedTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABA649B1799ED7A00F90D3A /* StanfordPhotosDetailedTVC.m */; };
 		4ABA64A41799ED7A00F90D3A /* StanfordPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABA649D1799ED7A00F90D3A /* StanfordPhotosTVC.m */; };
 		4ABA64D11799EDD700F90D3A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ABA64D01799EDD700F90D3A /* MainStoryboard.storyboard */; };
+		4ABA64D4179A021B00F90D3A /* UIApplication+NetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABA64D3179A021B00F90D3A /* UIApplication+NetworkActivity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		4ABA649C1799ED7A00F90D3A /* StanfordPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StanfordPhotosTVC.h; sourceTree = "<group>"; };
 		4ABA649D1799ED7A00F90D3A /* StanfordPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StanfordPhotosTVC.m; sourceTree = "<group>"; };
 		4ABA64D01799EDD700F90D3A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		4ABA64D2179A021B00F90D3A /* UIApplication+NetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+NetworkActivity.h"; sourceTree = "<group>"; };
+		4ABA64D3179A021B00F90D3A /* UIApplication+NetworkActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+NetworkActivity.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				4ABA649D1799ED7A00F90D3A /* StanfordPhotosTVC.m */,
 				4ABA64591799EBF500F90D3A /* Supporting Files */,
 				4ABA64D01799EDD700F90D3A /* MainStoryboard.storyboard */,
+				4ABA64D2179A021B00F90D3A /* UIApplication+NetworkActivity.h */,
+				4ABA64D3179A021B00F90D3A /* UIApplication+NetworkActivity.m */,
 			);
 			path = "Fast SPoT";
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				4ABA64A21799ED7A00F90D3A /* RecentlyViewedPhotosTVC.m in Sources */,
 				4ABA64A31799ED7A00F90D3A /* StanfordPhotosDetailedTVC.m in Sources */,
 				4ABA64A41799ED7A00F90D3A /* StanfordPhotosTVC.m in Sources */,
+				4ABA64D4179A021B00F90D3A /* UIApplication+NetworkActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

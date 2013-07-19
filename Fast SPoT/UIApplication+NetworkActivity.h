@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIApplication_NetworkActivity : UIApplication
-
+@interface UIApplication (NetworkActivity)
+- (void)pushNetworkActivity;
+- (void)popNetworkActivity;
 @end
