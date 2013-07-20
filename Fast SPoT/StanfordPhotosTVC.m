@@ -88,6 +88,21 @@
 - (void)viewDidLoad
 {
     self.photos = [FlickrFetcher stanfordPhotos];
+    [self.refreshControl addTarget:self
+                            action:@selector(refresh)
+                  forControlEvents:UIControlEventValueChanged];
+}
+
+- (IBAction)refresh
+{
+    dispatch_queue_t refreshPhotosQ = dispatch_queue_create("Update photos", NULL);
+    [self.refreshControl beginRefreshing];
+    dispatch_async(refreshPhotosQ, ^{
+        self.photos = [FlickrFetcher stanfordPhotos];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.refreshControl endRefreshing];
+        });
+    });
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
