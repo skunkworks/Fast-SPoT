@@ -146,10 +146,15 @@
         NSURL *cachedPhotoURL = [self.dirURL URLByAppendingPathComponent:fileName];
         image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:cachedPhotoURL]];
 
-        // Update file attribute to reflect recent usage
-        NSDate *lastAccessed = [NSDate date];
-        [cachedPhotoURL setResourceValue:lastAccessed forKey:NSURLContentAccessDateKey error:nil];
-        ((CachedPhoto *)self.files[fileName]).lastAccessed = lastAccessed;
+        // Need to check whether we successfully retrieved image. Cache dir that we're using has no guarantee of length
+        // of life of files. Even if it misses, we will keep the cache entry with no valid cached image data around until
+        // it eventually gets pushed off in purgeLeastRecentlyUsed
+        if (image) {
+            // Update file attribute to reflect recent usage
+            NSDate *lastAccessed = [NSDate date];
+            [cachedPhotoURL setResourceValue:lastAccessed forKey:NSURLContentAccessDateKey error:nil];
+            ((CachedPhoto *)self.files[fileName]).lastAccessed = lastAccessed;
+        }
     }
     
     return image;
