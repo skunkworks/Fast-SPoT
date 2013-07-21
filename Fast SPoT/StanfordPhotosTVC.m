@@ -10,7 +10,9 @@
 #import "FlickrFetcher.h"
 
 @interface StanfordPhotosTVC ()
+// The model. Key is the photo tag name, value is an array of Flickr photo metadata (as NSDictionary objects)
 @property (strong, nonatomic) NSMutableDictionary *tags; // Key = NSString, Value = NSArray of NSDictionary
+// An array containing the dictionary keys from tags (i.e. the photo tags), but ordered ascending by alphabet. Necessary to alphabetize tags.
 @property (strong, nonatomic) NSArray *rowTags; // of NSString
 @end
 
