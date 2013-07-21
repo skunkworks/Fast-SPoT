@@ -7,12 +7,23 @@
 //
 
 #import "StanfordPhotosDetailedTVC.h"
+#import "FlickrFetcher.h"
 
 @interface StanfordPhotosDetailedTVC ()
 
 @end
 
 @implementation StanfordPhotosDetailedTVC
+
+@synthesize photos = _photos;
+- (void)setPhotos:(NSArray *)photos {
+    _photos = [photos sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSDictionary *obj1Dictionary = (NSDictionary *)obj1;
+        NSDictionary *obj2Dictionary = (NSDictionary *)obj2;
+        return [(obj1Dictionary[FLICKR_PHOTO_TITLE]) compare:obj2Dictionary[FLICKR_PHOTO_TITLE]];
+    }
+    ];
+}
 
 - (NSString *)cellIdentifier {
     return @"Stanford Tagged Photo";

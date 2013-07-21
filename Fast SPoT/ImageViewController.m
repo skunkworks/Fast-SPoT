@@ -49,25 +49,22 @@
         self.imageView.image = nil;
         
         // Grab image data from URL. Do this with a serial dispatch queue
-        NSURL *imageURL = self.imageURL;
-        
         [self.activityIndicator startAnimating];
-        
         dispatch_queue_t imageQ = dispatch_queue_create("Image queue", NULL);
         dispatch_async(imageQ, ^{
             UIImage *image = [[PhotoCache sharedInstance] retrievePhotoForURL:self.imageURL];
-            
+
             if (!image) {
                 [[UIApplication sharedApplication] pushNetworkActivity];
-                [NSThread sleepForTimeInterval:2];
+                [NSThread sleepForTimeInterval:5];
                 NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
                 [[UIApplication sharedApplication] popNetworkActivity];
                 image = [[UIImage alloc] initWithData:imageData];
                 [[PhotoCache sharedInstance] addPhoto:image fromURL:self.imageURL];
             }
             
-            // Successfully pulled image. Check that user hasn't chosen another image URL before displaying
-            if (self.imageURL == imageURL) {
+            // Successfully pulled image, but check if we're still on screen before updating UI
+            if (self.view.window != nil) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (image) {
                         self.scrollView.contentSize = image.size;
