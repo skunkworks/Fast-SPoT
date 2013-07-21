@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AA130F0179B045B0082F0C6 /* PhotoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA130EF179B045B0082F0C6 /* PhotoCache.m */; };
+		4AA130F3179B98920082F0C6 /* CachedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA130F2179B98920082F0C6 /* CachedPhoto.m */; };
 		4ABA64531799EBF500F90D3A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABA64521799EBF500F90D3A /* UIKit.framework */; };
 		4ABA64551799EBF500F90D3A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABA64541799EBF500F90D3A /* Foundation.framework */; };
 		4ABA64571799EBF500F90D3A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABA64561799EBF500F90D3A /* CoreGraphics.framework */; };
@@ -28,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4AA130EE179B045B0082F0C6 /* PhotoCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCache.h; sourceTree = "<group>"; };
+		4AA130EF179B045B0082F0C6 /* PhotoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCache.m; sourceTree = "<group>"; };
+		4AA130F1179B98920082F0C6 /* CachedPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CachedPhoto.h; sourceTree = "<group>"; };
+		4AA130F2179B98920082F0C6 /* CachedPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CachedPhoto.m; sourceTree = "<group>"; };
 		4ABA644F1799EBF500F90D3A /* Fast SPoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fast SPoT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ABA64521799EBF500F90D3A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4ABA64541799EBF500F90D3A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,6 +128,10 @@
 				4ABA64D01799EDD700F90D3A /* MainStoryboard.storyboard */,
 				4ABA64D2179A021B00F90D3A /* UIApplication+NetworkActivity.h */,
 				4ABA64D3179A021B00F90D3A /* UIApplication+NetworkActivity.m */,
+				4AA130EE179B045B0082F0C6 /* PhotoCache.h */,
+				4AA130EF179B045B0082F0C6 /* PhotoCache.m */,
+				4AA130F1179B98920082F0C6 /* CachedPhoto.h */,
+				4AA130F2179B98920082F0C6 /* CachedPhoto.m */,
 			);
 			path = "Fast SPoT";
 			sourceTree = "<group>";
@@ -229,6 +239,8 @@
 				4ABA64A31799ED7A00F90D3A /* StanfordPhotosDetailedTVC.m in Sources */,
 				4ABA64A41799ED7A00F90D3A /* StanfordPhotosTVC.m in Sources */,
 				4ABA64D4179A021B00F90D3A /* UIApplication+NetworkActivity.m in Sources */,
+				4AA130F0179B045B0082F0C6 /* PhotoCache.m in Sources */,
+				4AA130F3179B98920082F0C6 /* CachedPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +355,7 @@
 				4ABA64741799EBF500F90D3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

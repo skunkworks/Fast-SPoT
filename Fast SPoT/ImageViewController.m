@@ -8,6 +8,7 @@
 
 #import "ImageViewController.h"
 #import "UIApplication+NetworkActivity.h"
+#import "PhotoCache.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -16,6 +17,7 @@
 @end
 
 @implementation ImageViewController
+
 - (void)setImageURL:(NSURL *)imageURL {
     _imageURL = imageURL;
     [self resetImage];
@@ -53,13 +55,18 @@
         
         dispatch_queue_t imageQ = dispatch_queue_create("Image queue", NULL);
         dispatch_async(imageQ, ^{
-            [[UIApplication sharedApplication] pushNetworkActivity];
-            [NSThread sleepForTimeInterval:2];
-            NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-            [[UIApplication sharedApplication] popNetworkActivity];
+            UIImage *image = [[PhotoCache sharedInstance] retrievePhotoForURL:self.imageURL];
+            
+            if (!image) {
+                [[UIApplication sharedApplication] pushNetworkActivity];
+                [NSThread sleepForTimeInterval:2];
+                NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+                [[UIApplication sharedApplication] popNetworkActivity];
+                image = [[UIImage alloc] initWithData:imageData];
+                [[PhotoCache sharedInstance] addPhoto:image fromURL:self.imageURL];
+            }
             
             // Successfully pulled image. Check that user hasn't chosen another image URL before displaying
-            UIImage *image = [[UIImage alloc] initWithData:imageData];
             if (self.imageURL == imageURL) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (image) {
