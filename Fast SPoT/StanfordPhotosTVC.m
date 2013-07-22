@@ -96,6 +96,11 @@
     [self.refreshControl addTarget:self
                             action:@selector(refresh)
                   forControlEvents:UIControlEventValueChanged];
+    
+    // If we're running on an iPad split view, display the toolbar allow user to switch master view to recent photos
+//    if (self.splitViewController == nil) {
+//        self.navigationController.toolbarHidden = YES;
+//    }
 }
 
 - (IBAction)refresh
