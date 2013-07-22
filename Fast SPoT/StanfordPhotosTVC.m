@@ -9,7 +9,7 @@
 #import "StanfordPhotosTVC.h"
 #import "FlickrFetcher.h"
 
-@interface StanfordPhotosTVC ()
+@interface StanfordPhotosTVC () <UISplitViewControllerDelegate>
 // The model. Key is the photo tag name, value is an array of Flickr photo metadata (as NSDictionary objects)
 @property (strong, nonatomic) NSMutableDictionary *tags; // Key = NSString, Value = NSArray of NSDictionary
 // An array containing the dictionary keys from tags (i.e. the photo tags), but ordered ascending by alphabet. Necessary to alphabetize tags.
@@ -89,7 +89,10 @@
 
 - (void)viewDidLoad
 {
+    // Set the model
     self.photos = [FlickrFetcher stanfordPhotos];
+    
+    // Hook up target/action for refresh control. Must do in code.
     [self.refreshControl addTarget:self
                             action:@selector(refresh)
                   forControlEvents:UIControlEventValueChanged];
@@ -123,6 +126,18 @@
             }
         }
     }
+}
+
+- (void)awakeFromNib
+{
+    self.splitViewController.delegate = self;
+}
+
+- (BOOL)splitViewController:(UISplitViewController *)svc
+   shouldHideViewController:(UIViewController *)vc
+              inOrientation:(UIInterfaceOrientation)orientation
+{
+    return NO;
 }
 
 @end

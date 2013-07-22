@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4AA130F0179B045B0082F0C6 /* PhotoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA130EF179B045B0082F0C6 /* PhotoCache.m */; };
 		4AA130F3179B98920082F0C6 /* CachedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA130F2179B98920082F0C6 /* CachedPhoto.m */; };
+		4AA130F5179DB5F80082F0C6 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AA130F4179DB5F80082F0C6 /* iPad.storyboard */; };
 		4ABA64531799EBF500F90D3A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABA64521799EBF500F90D3A /* UIKit.framework */; };
 		4ABA64551799EBF500F90D3A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABA64541799EBF500F90D3A /* Foundation.framework */; };
 		4ABA64571799EBF500F90D3A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABA64561799EBF500F90D3A /* CoreGraphics.framework */; };
@@ -25,7 +26,7 @@
 		4ABA64A21799ED7A00F90D3A /* RecentlyViewedPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABA64991799ED7A00F90D3A /* RecentlyViewedPhotosTVC.m */; };
 		4ABA64A31799ED7A00F90D3A /* StanfordPhotosDetailedTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABA649B1799ED7A00F90D3A /* StanfordPhotosDetailedTVC.m */; };
 		4ABA64A41799ED7A00F90D3A /* StanfordPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABA649D1799ED7A00F90D3A /* StanfordPhotosTVC.m */; };
-		4ABA64D11799EDD700F90D3A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ABA64D01799EDD700F90D3A /* MainStoryboard.storyboard */; };
+		4ABA64D11799EDD700F90D3A /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ABA64D01799EDD700F90D3A /* iPhone.storyboard */; };
 		4ABA64D4179A021B00F90D3A /* UIApplication+NetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABA64D3179A021B00F90D3A /* UIApplication+NetworkActivity.m */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		4AA130EF179B045B0082F0C6 /* PhotoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCache.m; sourceTree = "<group>"; };
 		4AA130F1179B98920082F0C6 /* CachedPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CachedPhoto.h; sourceTree = "<group>"; };
 		4AA130F2179B98920082F0C6 /* CachedPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CachedPhoto.m; sourceTree = "<group>"; };
+		4AA130F4179DB5F80082F0C6 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		4ABA644F1799EBF500F90D3A /* Fast SPoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fast SPoT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ABA64521799EBF500F90D3A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4ABA64541799EBF500F90D3A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,7 +64,7 @@
 		4ABA649B1799ED7A00F90D3A /* StanfordPhotosDetailedTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StanfordPhotosDetailedTVC.m; sourceTree = "<group>"; };
 		4ABA649C1799ED7A00F90D3A /* StanfordPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StanfordPhotosTVC.h; sourceTree = "<group>"; };
 		4ABA649D1799ED7A00F90D3A /* StanfordPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StanfordPhotosTVC.m; sourceTree = "<group>"; };
-		4ABA64D01799EDD700F90D3A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		4ABA64D01799EDD700F90D3A /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		4ABA64D2179A021B00F90D3A /* UIApplication+NetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+NetworkActivity.h"; sourceTree = "<group>"; };
 		4ABA64D3179A021B00F90D3A /* UIApplication+NetworkActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+NetworkActivity.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +127,8 @@
 				4ABA649C1799ED7A00F90D3A /* StanfordPhotosTVC.h */,
 				4ABA649D1799ED7A00F90D3A /* StanfordPhotosTVC.m */,
 				4ABA64591799EBF500F90D3A /* Supporting Files */,
-				4ABA64D01799EDD700F90D3A /* MainStoryboard.storyboard */,
+				4ABA64D01799EDD700F90D3A /* iPhone.storyboard */,
+				4AA130F4179DB5F80082F0C6 /* iPad.storyboard */,
 				4ABA64D2179A021B00F90D3A /* UIApplication+NetworkActivity.h */,
 				4ABA64D3179A021B00F90D3A /* UIApplication+NetworkActivity.m */,
 				4AA130EE179B045B0082F0C6 /* PhotoCache.h */,
@@ -218,7 +221,8 @@
 				4ABA64651799EBF500F90D3A /* Default.png in Resources */,
 				4ABA64671799EBF500F90D3A /* Default@2x.png in Resources */,
 				4ABA64691799EBF500F90D3A /* Default-568h@2x.png in Resources */,
-				4ABA64D11799EDD700F90D3A /* MainStoryboard.storyboard in Resources */,
+				4ABA64D11799EDD700F90D3A /* iPhone.storyboard in Resources */,
+				4AA130F5179DB5F80082F0C6 /* iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +324,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fast SPoT/Fast SPoT-Prefix.pch";
 				INFOPLIST_FILE = "Fast SPoT/Fast SPoT-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -331,7 +337,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fast SPoT/Fast SPoT-Prefix.pch";
 				INFOPLIST_FILE = "Fast SPoT/Fast SPoT-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
