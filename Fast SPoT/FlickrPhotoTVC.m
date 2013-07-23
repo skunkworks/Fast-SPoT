@@ -8,7 +8,7 @@
 
 #import "FlickrPhotoTVC.h"
 #import "FlickrFetcher.h"
-#import "RecentlyViewedFlickrPhoto.h"
+#import "RecentlyViewedFlickrPhotos.h"
 
 @interface FlickrPhotoTVC ()
 
@@ -86,9 +86,7 @@
                 [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
                 [segue.destinationViewController setTitle:[self titleForRow:indexPath.row]];
                 
-                RecentlyViewedFlickrPhoto *rvfp = [[RecentlyViewedFlickrPhoto alloc] init];
-                rvfp.photoDictionary = self.photos[indexPath.row];
-                [rvfp synchronize];
+                [[RecentlyViewedFlickrPhotos sharedInstance] addPhoto:self.photos[indexPath.row]];
             }
         }
     }

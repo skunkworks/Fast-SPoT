@@ -30,17 +30,17 @@
     }
 }
 
-#define CAPACITY_KEY @"PhotoCache_Capacity"
-#define CAPACITY_DEFAULT 5
+#define CACHE_CAPACITY_KEY @"PhotoCache_Capacity"
+#define CACHE_CAPACITY_DEFAULT 5
 
 @synthesize capacity = _capacity;
 
 - (NSUInteger)capacity {
     if (_capacity == 0) {
         // Retrieve capacity from user defaults. If it doesn't exist, use default
-        NSNumber *num = [[NSUserDefaults standardUserDefaults] valueForKey:CAPACITY_KEY];
+        NSNumber *num = [[NSUserDefaults standardUserDefaults] valueForKey:CACHE_CAPACITY_KEY];
         if ([num intValue]) _capacity = [num intValue];
-        else _capacity = CAPACITY_DEFAULT;
+        else _capacity = CACHE_CAPACITY_DEFAULT;
     }
     return _capacity;
 }
@@ -49,7 +49,7 @@
     if (capacity > 0) {
         _capacity = capacity;
         // Store the capacity to user defaults so that this setting persists
-        [[NSUserDefaults standardUserDefaults] setValue:@(_capacity) forKey:CAPACITY_KEY];
+        [[NSUserDefaults standardUserDefaults] setValue:@(_capacity) forKey:CACHE_CAPACITY_KEY];
     }
     while ([self.files count] > _capacity) {
         [self purgeLeastRecentlyUsed];

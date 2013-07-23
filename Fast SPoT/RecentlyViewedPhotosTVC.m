@@ -7,10 +7,9 @@
 //
 
 #import "RecentlyViewedPhotosTVC.h"
-#import "RecentlyViewedFlickrPhoto.h"
+#import "RecentlyViewedFlickrPhotos.h"
 
 @interface RecentlyViewedPhotosTVC ()
-@property (strong, nonatomic) NSArray *recentlyViewedPhotos;
 @end
 
 @implementation RecentlyViewedPhotosTVC
@@ -25,10 +24,9 @@
 }
 
 - (void)updateModel
-{    
-    self.recentlyViewedPhotos = [RecentlyViewedFlickrPhoto getAllSortedAscending:NO];
-    // Converts between our model recentlyViewedPhotos and the model necessary to display data in our superclass FlickrPhotoTVC
-    self.photos = [self.recentlyViewedPhotos valueForKeyPath:@"photoDictionary"];
+{
+    NSArray *sortedPhotos = [[RecentlyViewedFlickrPhotos sharedInstance] allPhotosSortedAscending:NO];
+    self.photos = sortedPhotos;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -39,17 +37,17 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
     
-    NSArray *previousRecentlyViewedPhotos = self.recentlyViewedPhotos;
+    NSArray *previousRecentlyViewedPhotos = self.photos;
     [self updateModel];
     
     // We need to animate updates to the recently viewed photo list as the user views the recent photos
     [self.tableView beginUpdates];
     
-    for (int i = 0; i < self.recentlyViewedPhotos.count; i++)
+    for (int i = 0; i < self.photos.count; i++)
     {
         id previousPhoto = previousRecentlyViewedPhotos[i];
         // newRow will get the new row of an object.  i is the old row.
-        int newRow = [self.recentlyViewedPhotos indexOfObject:previousPhoto];
+        int newRow = [self.photos indexOfObject:previousPhoto];
         if (newRow != NSNotFound) {
             [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] toIndexPath:[NSIndexPath indexPathForRow:newRow inSection:0]];
         }

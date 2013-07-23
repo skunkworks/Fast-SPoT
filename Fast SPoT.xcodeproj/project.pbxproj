@@ -10,6 +10,7 @@
 		4AA130F0179B045B0082F0C6 /* PhotoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA130EF179B045B0082F0C6 /* PhotoCache.m */; };
 		4AA130F3179B98920082F0C6 /* CachedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA130F2179B98920082F0C6 /* CachedPhoto.m */; };
 		4AA130F5179DB5F80082F0C6 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AA130F4179DB5F80082F0C6 /* iPad.storyboard */; };
+		4AA130F8179DE7BF0082F0C6 /* RecentlyViewedFlickrPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA130F7179DE7BE0082F0C6 /* RecentlyViewedFlickrPhotos.m */; };
 		4ABA64531799EBF500F90D3A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABA64521799EBF500F90D3A /* UIKit.framework */; };
 		4ABA64551799EBF500F90D3A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABA64541799EBF500F90D3A /* Foundation.framework */; };
 		4ABA64571799EBF500F90D3A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABA64561799EBF500F90D3A /* CoreGraphics.framework */; };
@@ -36,6 +37,8 @@
 		4AA130F1179B98920082F0C6 /* CachedPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CachedPhoto.h; sourceTree = "<group>"; };
 		4AA130F2179B98920082F0C6 /* CachedPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CachedPhoto.m; sourceTree = "<group>"; };
 		4AA130F4179DB5F80082F0C6 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
+		4AA130F6179DE7BE0082F0C6 /* RecentlyViewedFlickrPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentlyViewedFlickrPhotos.h; sourceTree = "<group>"; };
+		4AA130F7179DE7BE0082F0C6 /* RecentlyViewedFlickrPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentlyViewedFlickrPhotos.m; sourceTree = "<group>"; };
 		4ABA644F1799EBF500F90D3A /* Fast SPoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fast SPoT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ABA64521799EBF500F90D3A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4ABA64541799EBF500F90D3A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,6 +125,8 @@
 				4ABA64971799ED7A00F90D3A /* RecentlyViewedFlickrPhoto.m */,
 				4ABA64981799ED7A00F90D3A /* RecentlyViewedPhotosTVC.h */,
 				4ABA64991799ED7A00F90D3A /* RecentlyViewedPhotosTVC.m */,
+				4AA130F6179DE7BE0082F0C6 /* RecentlyViewedFlickrPhotos.h */,
+				4AA130F7179DE7BE0082F0C6 /* RecentlyViewedFlickrPhotos.m */,
 				4ABA649A1799ED7A00F90D3A /* StanfordPhotosDetailedTVC.h */,
 				4ABA649B1799ED7A00F90D3A /* StanfordPhotosDetailedTVC.m */,
 				4ABA649C1799ED7A00F90D3A /* StanfordPhotosTVC.h */,
@@ -245,6 +250,7 @@
 				4ABA64D4179A021B00F90D3A /* UIApplication+NetworkActivity.m in Sources */,
 				4AA130F0179B045B0082F0C6 /* PhotoCache.m in Sources */,
 				4AA130F3179B98920082F0C6 /* CachedPhoto.m in Sources */,
+				4AA130F8179DE7BF0082F0C6 /* RecentlyViewedFlickrPhotos.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
