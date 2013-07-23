@@ -89,15 +89,11 @@
                                                                  error:nil];
             if ([urls count]) {
                 for (NSURL *url in urls) {
-                    NSString *urlName;
-                    NSDate *accessDate;
-                    [url getResourceValue:&urlName forKey:NSURLNameKey error:nil];
-                    [url getResourceValue:&accessDate forKey:NSURLContentAccessDateKey error:nil];
-
+                    NSDictionary *resourceValuesDictionary = [url resourceValuesForKeys:@[NSURLNameKey, NSURLContentAccessDateKey] error:nil];
                     CachedPhoto *cp = [[CachedPhoto alloc] init];
-                    cp.fileName = urlName;
-                    cp.lastAccessed = accessDate;
-                    self.files[urlName] = cp;
+                    cp.fileName = resourceValuesDictionary[NSURLNameKey];
+                    cp.lastAccessed = resourceValuesDictionary[NSURLContentAccessDateKey];
+                    self.files[cp.fileName] = cp;
                 }
             }
         } else {
