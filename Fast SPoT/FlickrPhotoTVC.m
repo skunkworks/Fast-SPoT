@@ -51,7 +51,7 @@
 // Returns the URL for the table view's cell's image photo. Can be overridden to provide a different photo
 - (NSURL *)imageURLForRow:(NSUInteger)row
 {
-    return [FlickrFetcher urlForPhoto:self.photos[0] format:FlickrPhotoFormatSquare];
+    return [FlickrFetcher urlForPhoto:self.photos[row] format:FlickrPhotoFormatSquare];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,7 +63,7 @@
     cell.detailTextLabel.text = [self subtitleForRow:indexPath.row];
 
     // Get square image
-    NSData *data = [[NSData alloc] initWithContentsOfURL:[FlickrFetcher urlForPhoto:self.photos[indexPath.row] format:FlickrPhotoFormatSquare]];
+    NSData *data = [[NSData alloc] initWithContentsOfURL:[self imageURLForRow:indexPath.row]];
     UIImage *image = [[UIImage alloc] initWithData:data];
     cell.imageView.image = image;
     
@@ -82,7 +82,8 @@
             // We make no assumptions about the class type of the destination controller, only that it responds
             // to the selector setImageURL
             if ([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]) {
-                NSURL *url = [FlickrFetcher urlForPhoto:self.photos[indexPath.row] format:FlickrPhotoFormatLarge];
+                FlickrPhotoFormat format = (self.splitViewController != nil) ? FlickrPhotoFormatOriginal : FlickrPhotoFormatLarge;
+                NSURL *url = [FlickrFetcher urlForPhoto:self.photos[indexPath.row] format:format];
                 [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
                 [segue.destinationViewController setTitle:[self titleForRow:indexPath.row]];
                 

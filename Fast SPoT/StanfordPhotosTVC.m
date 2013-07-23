@@ -79,6 +79,7 @@
 - (NSURL *)imageURLForRow:(NSUInteger)row
 {
     NSString *tagName = self.rowTags[row];
+    // We grab the URL of the first photo for the tag category and use that as the cell thumbnail
     return [FlickrFetcher urlForPhoto:self.tags[tagName][0] format:FlickrPhotoFormatSquare];
 }
 
@@ -96,11 +97,6 @@
     [self.refreshControl addTarget:self
                             action:@selector(refresh)
                   forControlEvents:UIControlEventValueChanged];
-    
-    // If we're running on an iPad split view, display the toolbar allow user to switch master view to recent photos
-//    if (self.splitViewController == nil) {
-//        self.navigationController.toolbarHidden = YES;
-//    }
 }
 
 - (IBAction)refresh
