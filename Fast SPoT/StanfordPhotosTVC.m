@@ -8,6 +8,7 @@
 
 #import "StanfordPhotosTVC.h"
 #import "FlickrFetcher.h"
+#import "UIApplication+NetworkActivity.h"
 
 @interface StanfordPhotosTVC () <UISplitViewControllerDelegate>
 // The model. Key is the photo tag name, value is an array of Flickr photo metadata (as NSDictionary objects)
@@ -104,7 +105,9 @@
     dispatch_queue_t refreshPhotosQ = dispatch_queue_create("Update photos", NULL);
     [self.refreshControl beginRefreshing];
     dispatch_async(refreshPhotosQ, ^{
+        [[UIApplication sharedApplication] pushNetworkActivity];
         self.photos = [FlickrFetcher stanfordPhotos];
+        [[UIApplication sharedApplication] popNetworkActivity];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.refreshControl endRefreshing];
         });
